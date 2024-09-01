@@ -8,7 +8,7 @@
 
 ## 用法介绍
 
-```wxml
+```vue
 
 <recycle-view
         items="{{ items }}"
