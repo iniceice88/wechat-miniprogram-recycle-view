@@ -1,0 +1,6 @@
+<view style="padding: 10px; display: flex; flex-direction: row; flex-wrap: wrap">
+  <button bind:tap="handleDemo01" size="mini" data-name="demo01">原Demo</button>
+  <button bind:tap="handleDemo01" size="mini" data-name="demo02">Demo02</button>
+  <button bind:tap="handleDemo01" size="mini" data-name="demo03">无限滚动 </button>
+  <button bind:tap="handleDemo01" size="mini" data-name="demo04">多个组件 </button>
+</view>

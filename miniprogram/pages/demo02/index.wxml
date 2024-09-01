@@ -1,0 +1,24 @@
+<view>
+  <recycle-view
+    items="{{ items }}"
+    itemHeight="{{ 100 }}"
+    itemWidth="100%"
+    bind:onItemSize="onCalcRecycleItemSize"
+    style="background-color: #f0f0f0"
+  >
+    <view slot="before">
+      <view style="display: flex; flex-direction: row; margin-bottom: 8px">
+        <button bind:tap="handleRandomHeights">随机高度</button>
+        <button bind:tap="handleFixedHeights">固定高度</button>
+      </view>
+    </view>
+
+    <recycle-item wx:for="{{ recycleList }}" wx:key="id" item="{{ item }}">
+      <view>{{ item.name }} - {{ item.__size__.width }}*{{ item.__size__.height }}</view>
+    </recycle-item>
+
+    <view slot="after">
+      <view style="padding-bottom: env(safe-area-inset-bottom);">after</view>
+    </view>
+  </recycle-view>
+</view>

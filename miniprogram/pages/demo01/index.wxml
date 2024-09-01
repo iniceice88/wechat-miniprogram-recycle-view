@@ -1,0 +1,38 @@
+<view style="display: flex; flex-direction: column">
+  <view style="height: 30px; display: flex; flex-direction: row; margin-bottom: 10px">
+    <button style="font-size: 14px" bindtap="scrollToRandom">scrollTo5000</button>
+    <button style="font-size: 14px" bindtap="scrollTo0">scrollTo0</button>
+    <button style="font-size: 14px" bindtap="scrollToid">scrollToIdx</button>
+  </view>
+
+  <recycle-view
+    id="recycleId"
+    items="{{ items }}"
+    style="flex-grow: 1"
+    placeholder-image="{{placeholderImage}}"
+    scroll-with-animation="{{true}}"
+    height="{{ recycleViewHeight }}"
+    itemHeight="160"
+    itemWidth="50%"
+    scrollTop="{{ scrollTop }}"
+    scrollToIndex="{{ scrollToIndex }}"
+    bind:contextReady="handleContextReady"
+    bind:scroll="handleScroll"
+  >
+    <view slot="before"></view>
+    <recycle-item wx:for="{{recycleList}}" wx:key="id" item="{{ item }}">
+      <view class="recycle-itemsize">
+        <image
+          style="width: 80px; height: 80px"
+          src="{{item.image_url}}?imageView2/2/w/120/h/0/q/120/format/jpg"
+        />
+        <text>{{item.idx + 1}}. {{item.title}}</text>
+      </view>
+    </recycle-item>
+    <view slot="after" style="height: 200px">after height:200px view</view>
+  </recycle-view>
+
+  <view style="height: 24px; padding-bottom: env(safe-area-inset-bottom)">
+    <text>Top: {{ scrollTopDesc }}</text>
+  </view>
+</view>

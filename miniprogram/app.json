@@ -1,0 +1,21 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/demo01/index",
+    "pages/demo02/index",
+    "pages/demo03/index",
+    "pages/demo04/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "recycle-view": "recycle-view/recycle-view",
+    "recycle-item": "recycle-view/recycle-item"
+  }
+}

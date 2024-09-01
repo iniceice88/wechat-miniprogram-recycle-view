@@ -1,0 +1,20 @@
+{
+  "name": "miniprogram-ts-less-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "clean": "rimraf ./dist",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.12.3",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

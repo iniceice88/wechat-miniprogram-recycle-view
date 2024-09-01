@@ -1,0 +1,42 @@
+<view style="display: flex; flex-direction: column; height: 100%; background-color: blue">
+  <recycle-view
+    items="{{ items }}"
+    itemHeight="{{ 70 }}"
+    itemWidth="100%"
+    height="{{ recycleViewHeight }}"
+    style="background-color: #f0f0f0; flex: 1"
+    bind:scrolltolower="handleLoadMore"
+  >
+    <view slot="before"> recycle-view1 </view>
+    <recycle-item wx:for="{{ recycleList }}" wx:key="id" item="{{ item }}">
+      <view>{{ item.name }} - {{ item.__size__.width }}*{{ item.__size__.height }}</view>
+    </recycle-item>
+
+    <view slot="after">
+      <view style="text-align: center; color: gray">
+        {{ hasMore ? '' : '----- 到底了哦 -----'}}
+      </view>
+    </view>
+  </recycle-view>
+
+  <recycle-view
+    items="{{ items2 }}"
+    itemHeight="{{ 50 }}"
+    itemWidth="100%"
+    dataKey="recycleList2"
+    height="{{ recycleViewHeight2 }}"
+    style="background-color: #f0f0f0; flex: 2"
+    bind:scrolltolower="handleLoadMore2"
+  >
+    <view slot="before"> recycle-view2 </view>
+    <recycle-item wx:for="{{ recycleList2 }}" wx:key="id" item="{{ item }}">
+      <view>{{ item.name }} - {{ item.__size__.width }}*{{ item.__size__.height }}</view>
+    </recycle-item>
+
+    <view slot="after">
+      <view style="padding-bottom: env(safe-area-inset-bottom); text-align: center; color: gray">
+        {{ hasMore2 ? '' : '----- 到底了哦2 -----'}}
+      </view>
+    </view>
+  </recycle-view>
+</view>

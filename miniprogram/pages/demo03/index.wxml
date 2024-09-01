@@ -1,0 +1,19 @@
+<view>
+  <recycle-view
+    items="{{ items }}"
+    itemHeight="{{ 60 }}"
+    itemWidth="100%"
+    style="background-color: #f0f0f0"
+    bind:scrolltolower="handleLoadMore"
+  >
+    <recycle-item wx:for="{{ recycleList }}" wx:key="id" item="{{ item }}">
+      <view>{{ item.name }} - {{ item.__size__.width }}*{{ item.__size__.height }}</view>
+    </recycle-item>
+
+    <view slot="after">
+      <view style="padding-bottom: env(safe-area-inset-bottom); text-align: center;color:gray;">
+        {{ hasMore ? '' : '----- 到底了哦 -----'}}
+      </view>
+    </view>
+  </recycle-view>
+</view>
