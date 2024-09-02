@@ -1,4 +1,4 @@
-import { rpxToPx } from './libs/rpxToPx.js'
+import { convertToPx, rpxToPx } from './libs/rpxToPx.js'
 import { RecycleContext } from './libs/recycle-context'
 import type {
   ItemSizeType,
@@ -81,16 +81,18 @@ Component({
     },
     /**
      * 行高
-     * 如果设置，则所有行统一使用这个高度，而且默认宽度为100%
+     * 如果设置，则所有行统一使用这个高度
+     * 支持[100, '100rpx', '10px']的形式
      */
     itemHeight: {
-      type: Number,
-      value: 0,
+      type: null,
+      value: null,
+      optionalTypes: [Number, String],
     },
     /**
      * 列宽
      * 如果设置，则所有行统一使用这个宽度
-     * 可以是 10% 的形式
+     * 支持[100, '100rpx', '10px','10%']的形式
      */
     itemWidth: {
       type: null,
@@ -512,7 +514,7 @@ Component({
       return getVm(this).totalHeight
     },
     onCalcRecycleItemSize(item: any, idx: number) {
-      const height = this.data.itemHeight
+      const height = convertToPx(this.data.itemHeight)
       let width = convertItemWidth(this.data.itemWidth, this.data.width)
       if (this.data.itemHeight > 0 && !width) {
         width = this.data.width // 默认宽度为100%
@@ -551,6 +553,5 @@ function convertItemWidth(itemWidth: string | number, totalWidth: number): numbe
     const n = Number(itemWidth)
     return isNaN(n) ? totalWidth : (totalWidth * n) / 100
   }
-  const n = Number(itemWidth)
-  return isNaN(n) ? totalWidth : n
+  return convertToPx(itemWidth) || totalWidth
 }

@@ -11,18 +11,18 @@
 ```vue
 
 <recycle-view
-        items="{{ items }}"
-        itemHeight="{{ 100 }}"
-        itemWidth="100%"
+  items="{{ items }}"
+  itemHeight="{{ 100 }}"
+  itemWidth="100%"
 >
-    <view slot="before">before</view>
-    <recycle-item wx:for="{{ recycleList }}" wx:key="id" item="{{ item }}">
-        <view>{{ item.name }}</view>
-    </recycle-item>
+  <view slot="before">before</view>
+  <recycle-item wx:for="{{ recycleList }}" wx:key="id" item="{{ item }}">
+    <view>{{ item.name }}</view>
+  </recycle-item>
 
-    <view slot="after">
-        <view style="padding-bottom: env(safe-area-inset-bottom);">after</view>
-    </view>
+  <view slot="after">
+    <view style="padding-bottom: env(safe-area-inset-bottom);">after</view>
+  </view>
 </recycle-view>
 ```
 
@@ -43,7 +43,7 @@ Component({
 
 ## 和原版比较
 
-- 无需`createRecycleContext`只需要`recycle-view`和`recycle-item`
+- 无需`createRecycleContext`只需要`recycle-view`
 - 无需设置 `recycle-view` 的 `id` 和 `batch` 属性的值
 - 增加`itemHeight`，对于统一高度的情况很方便
 - 增加`itemWidth`，宽度可以是百分比形式,比如`50%`
@@ -58,3 +58,18 @@ Component({
 - 需要把实际的列表数据绑定到`recycle-view`的`items`属性上
 - `recycle-item`中的`wx:for`设置的是`dataKey`对应的值,默认是`recycleList`,和原版一致。但是为了设置`recycle-item`
   尺寸，需要把当前`item`传递给`recycle-item`
+- `recycle-item`不是必须的,可以直接在`recycle-view`中放置自定义组件，但是需要手动设置高宽，且必须和`itemSize`一致
+```vue
+
+<recycle-view
+  items="{{ items }}"
+  itemHeight="{{ 100 }}"
+  itemWidth="100%"
+>
+  <view style="height: 100px; width: 100%"
+        wx:for="{{ recycleList }}"
+        wx:key="id">
+    {{ item.name }} - {{ item.__size__.width }}*{{ item.__size__.height }}
+  </view>
+</recycle-view>
+```

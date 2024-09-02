@@ -5,12 +5,13 @@
   "scripts": {
     "check": "tsc --noEmit",
     "clean": "rimraf ./dist",
-    "build": "pnpm run clean && tsc --project tsconfig.build.json"
+    "build": "pnpm run clean && tsc --project tsconfig.build.json && node scripts/copyWxFiles.js"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
+    "fs-extra": "^11.2.0",
     "miniprogram-api-typings": "^3.12.3",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",

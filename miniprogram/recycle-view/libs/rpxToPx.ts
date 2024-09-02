@@ -53,4 +53,15 @@ const rpxToPx = (style: string | number, withUnit?: boolean): string => {
   })
 }
 
-export { rpxToPx }
+const convertToPx = (height: string | number): number => {
+  if (!height) return 0
+  if (typeof height === 'number') return Number(height)
+  if (height.toLowerCase().includes('rpx')) {
+    return Number(rpxToPx(height, false)) || 0
+  }
+
+  height = height.replace(/px/i, '')
+  return Number(height) || 0
+}
+
+export { rpxToPx, convertToPx }
